@@ -17,12 +17,14 @@ def get_order_list():
     return [{"skill": "AI"}, {"skill":"ComputerVision"}, {"skill:MLOps"},{"skill:BE"}] 
 
 app= FastAPI() 
+app.include_router(user_router)
+app.include_router(order_router)
+
 
 @app.get("/", tags=["root"])
 def root():
     return {"HI":"THERE :)"}
 
 if __name__ == '__main__': 
-    app.include_router(user_router)
-    app.include_router(order_router)
-    uvicorn.run("apiRouter:app", host = "0.0.0.0", port = 8000)
+    
+    uvicorn.run("apiRouter:app", host = "0.0.0.0", port = 8000, reload= True)
