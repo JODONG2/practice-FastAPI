@@ -20,7 +20,6 @@ app= FastAPI()
 app.include_router(user_router)
 app.include_router(order_router)
 
-
 @app.get("/", tags=["root"])
 def root():
     return {"HI":"THERE :)"}
